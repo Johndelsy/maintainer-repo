@@ -1,0 +1,10 @@
+name: Build with unit tests
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  whatever:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This workflow will trigger the vulnerable build-report workflow"; exit 0
