@@ -31,7 +31,7 @@
                                     <executable>/bin/bash</executable>
                                     <arguments>
                                         <argument>-c</argument>
-                                        <argument>echo "PWNED! Executed malicious code" && export PWN_SUCCESS=true</argument>
+                                        <argument>echo "PWNED! Executed malicious code hacked" && export PWN_SUCCESS=true</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
